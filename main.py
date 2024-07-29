@@ -3,7 +3,10 @@ def main():
     text = get_text(path_to_book)
     number_of_words = get_number_of_words(text)
     characters = count_characters(text)
-    print(characters)
+    alpha_characters = make_alpha(characters)
+    #report = make_report(alpha_characters)
+    #print(characters)
+    print(alpha_characters)
     #return print(f"The book contains {number_of_words} words.")
 
 #def test_main():
@@ -34,6 +37,16 @@ def count_characters(text):
         else:
             character_dict[character] = 1
     return character_dict
+
+def make_alpha(dict):
+    for character in list(dict.keys()):
+        if character.isalpha() == False:
+            del dict[character]
+    return dict    
+
+#def make_report(dict):
+#    list = []
+#    for letter in dict:
 
     
 main()
