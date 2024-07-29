@@ -2,10 +2,18 @@ def main():
     path_to_book = "books/frankenstein.txt"
     text = get_text(path_to_book)
     number_of_words = get_number_of_words(text)
-    lowercase_text = make_lowercase(text)
-    character_list = get_character_list(lowercase_text)
-    print(character_list)
-    return print(f"The book contains {number_of_words} words.")
+    characters = count_characters(text)
+    print(characters)
+    #return print(f"The book contains {number_of_words} words.")
+
+#def test_main():
+#    test_text = "Hilfe zu viele Funktionen"
+#    test_number_of_words = get_number_of_words(test_text)
+#    low_test = make_lowercase(test_text)
+#    return print(test_number_of_words, low_test)
+
+
+
 
 def get_text(path):
     with open(path) as f:
@@ -17,17 +25,17 @@ def get_number_of_words(text):
     return len(words)
  
 
-def make_lowercase(text):
-    return text.lower()
+def count_characters(text):
+    lowercase_text = text.lower()
+    character_dict = {}
+    for character in lowercase_text:
+        if character in character_dict.keys():
+            character_dict[character] += 1
+        else:
+            character_dict[character] = 1
+    return character_dict
+
     
-
-def get_character_list(text):
-    a = " ".join(text.split())
-    return a.replace(" ", "")
-
-
-#def get_characters(word_list):
-#    return word_list.split()
-
 main()
+#test_main()
 
