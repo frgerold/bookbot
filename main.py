@@ -5,7 +5,15 @@ def main():
     characters = count_characters(text)
     alpha_characters = make_alpha(characters)
     list_of_dict = make_list_of_dict(alpha_characters)
-    print(list_of_dict)
+    expanded_list_dictionary = make_values_to_keys(alpha_characters)
+    expanded_list_dictionary.sort(reverse=True, key=sort_on)
+
+    print(f"--- Begin report of {path_to_book} ---")
+    print(f"The word count is {number_of_words}.")
+    for line in expanded_list_dictionary:
+        print(f"The '{line['letter']}' character was found {line['num']} times.")
+    print("--- End report ---")
+    #print(list_of_dict)
     #print(alpha_characters)
     #return print(f"The book contains {number_of_words} words.")
 
@@ -50,6 +58,14 @@ def make_list_of_dict(dict):
         list.append({key:dict[key]})
     return list
 
+def make_values_to_keys(dict):
+    list = []
+    for key in dict:
+        list.append({"letter":key , "num": dict[key]})
+    return list
+    
+def sort_on(dict):
+    return dict["num"]
 
 
 
