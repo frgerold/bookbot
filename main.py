@@ -4,9 +4,9 @@ def main():
     number_of_words = get_number_of_words(text)
     characters = count_characters(text)
     alpha_characters = make_alpha(characters)
-    #report = make_report(alpha_characters)
-    #print(characters)
-    print(alpha_characters)
+    list_of_dict = make_list_of_dict(alpha_characters)
+    print(list_of_dict)
+    #print(alpha_characters)
     #return print(f"The book contains {number_of_words} words.")
 
 #def test_main():
@@ -44,11 +44,15 @@ def make_alpha(dict):
             del dict[character]
     return dict    
 
-#def make_report(dict):
-#    list = []
-#    for letter in dict:
+def make_list_of_dict(dict):
+    list = []
+    for key in dict:
+        list.append({key:dict[key]})
+    return list
 
-    
+
+
+
 main()
 #test_main()
 
